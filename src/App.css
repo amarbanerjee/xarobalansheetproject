@@ -1,38 +1,122 @@
-.App {
-  text-align: center;
+@charset"utf-8";
+
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body{
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: #000000;
+  font-weight:400;
+  line-height: normal;
+}
+div,
+table,
+td,
+tr,
+section,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+section,
+article,
+figure{
+  margin:0;
+  padding:0;
+}
+img{
+  width:auto;
+  max-width:100%;
+  height: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*============================================ Table Style Sheet Start Here ============================================*/
+table{
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+th, td{
+  padding: 8px 15px;
+  border: 1px solid rgba(0,0,0,.2);
+  text-align: right;
+}
+th:first-child, td:first-child{
+  text-align: left;
+}
+
+th{
+  font-size: 18px;
+  color: #000000;
+  font-weight: 600;
+}
+td{
+  font-size: 16px;
+  color: #000000;
+  font-weight: normal;
+}
+td:first-child{
+  font-weight: 600;
+}
+
+/*============================================ Responsive Table Style Sheet ============================================*/
+@media only screen and (max-width:767px){
+  thead {
+    position: absolute;
+    left: -9999px;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    
+  } 
+  
+  tr, td, th, thead, tbody, table {
+    display: block;
+    text-align: left;
+  }
+
+  td{
+    border: none;
+    border-top: 1px solid rgba(0,0,0,.2);
+    font-size: 14px;
+  }
+  
+  tbody tr:first-child,
+  tbody tr:nth-child(2){
+    display: none;
+  }
+  tbody tr:nth-child(2n+1) {
+    background-color: #efefef;
+    
+  }
+  
+  tbody tr td::before {
+    display: inline-block;
+    width: 25%;
+    min-width: 120px;
+    border-right: 1px solid rgba(0,0,0,.2);
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    
+  } 
+
+  tbody tr td::before {
+    content: attr(data-title);
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*============================================ Table Style Sheet End Here ============================================*/

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3001" # React app is exposed at 3001 on host
+    depends_on:
+      - node-api
+    networks:
+      - app-network
+
+  node-api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Internal port
+    depends_on:
+      - data-container
+    networks:
+      - app-network
+    environment:
+      - EXTERNAL_API_URL=http://host.docker.internal:3001/api.xro/2.0/Reports/BalanceSheet
+
+  data-container:
+    image: jaypeng2015/show-me-the-money
+    container_name: my-data-container
+    ports:
+      - "3000:3000" # Data container exposed at 3000 internally
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
